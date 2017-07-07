@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical" >
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:foregroundGravity="center_vertical"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            tools:fontFamily="sans-serif" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TableLayout
+            android:id="@+id/tableLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btAC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrisFosc"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:padding="0dp"
+                    android:text="AC"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/btSign"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrisFosc"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="+/-"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/btPorCent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="2"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrisFosc"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="%"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/btDiv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="3"
+                    android:layout_weight="1"
+                    android:background="@color/colorOperacions"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="/"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp"
+                    tools:background="@android:color/holo_orange_light" />
+
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/bt7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="7"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/bt8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="8"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/bt9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="2"
+                    android:layout_weight="1"
+
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="9"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/btMult"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="3"
+                    android:layout_weight="1"
+
+                    android:background="@color/colorOperacions"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="x"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp"
+                    tools:background="@android:color/holo_orange_light" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/bt4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/bt5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="5"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/bt6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="2"
+                    android:layout_weight="1"
+
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="6"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/btMenos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="3"
+                    android:layout_weight="1"
+
+                    android:background="@color/colorOperacions"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="-"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp"
+                    tools:background="@android:color/holo_orange_light" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/bt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="1"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/bt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="2"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/bt3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="2"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="3"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/btMas"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="3"
+                    android:layout_weight="1"
+                    android:background="@color/colorOperacions"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="+"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp"
+                    tools:background="@android:color/holo_orange_light" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:requiresFadingEdge="horizontal|vertical">
+
+                <Button
+                    android:id="@+id/bt0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="0"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/btxx"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text=""
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp"
+                    android:visibility="visible" />
+
+
+                <Button
+                    android:id="@+id/btComa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+
+                    android:background="@color/colorGrisClar"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text=","
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/btIgual"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="2"
+                    android:layout_weight="1"
+                    android:background="@color/colorOperacions"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="="
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textSize="30sp"
+                    tools:background="@android:color/holo_orange_light" />
+
+            </TableRow>
+
+
+        </TableLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+</FrameLayout>

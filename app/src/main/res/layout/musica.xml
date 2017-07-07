@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/m_titolMusica"
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:text="@string/Canço"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btMarcha"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorGrisClar"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/marcha"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btparada"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorGrisClar"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/parada"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btpausa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorGrisClar"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/pausa"
+        android:textSize="30sp" />
+
+
+</LinearLayout>
+

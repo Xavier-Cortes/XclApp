@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Aplicación</string>
+    <string name="title_activity_drawer">Aplication</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_logout">logout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="m_titolMusica">Música</string>
+    <string name="Canço">Canço</string>
+    <string name="marcha">Marcha</string>
+    <string name="parada">Parada</string>
+    <string name="pausa">Pausa</string>
+    <string name="memory">Memory</string>
+    <string name="ranking">Ranking</string>
+    <string name="música">Música</string>
+    <string name="perfil">Perfil</string>
+    <string name="calculadora">Calculadora</string>
+</resources>
