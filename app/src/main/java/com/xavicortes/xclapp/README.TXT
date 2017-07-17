@@ -13,7 +13,7 @@ Login
 Memory:
     4x4 amb 8 imatges sense posibilitat de modificar tamany
     Càlcula els intents essent el mímin de intents la millor puntuació
-    Permet reiniciar des de el drawer
+    Permet reiniciar des de el accionbar
     Al finalitzar mostra un dialeg indicant que es el final i mostra els intents
     La milllor puntuació queda guardada a la fitza del usuari
     Es bloqueja la rotació de la pantalla.
