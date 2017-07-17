@@ -1,38 +1,30 @@
 package com.xavicortes.xclapp.fragments;
 
 
-import android.app.Activity;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.xavicortes.xclapp.MediaPlayerBoundService;
+import com.xavicortes.xclapp.comu.Compartit;
+import com.xavicortes.xclapp.Util.MediaPlayerBoundService;
 import com.xavicortes.xclapp.R;
 
 import java.io.IOException;
-import android.support.v4.app.Fragment;
-import android.widget.Toast;
 
-
-import com.xavicortes.xclapp.R;
 import static android.content.Context.BIND_AUTO_CREATE;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+/*
+Controla un boudservice el que hi ha un mediaplayer executant una canço
+*/
 public class Musica
         extends Fragment
         implements View.OnClickListener {
@@ -45,12 +37,11 @@ public class Musica
      private Button btpause;
 
      private Intent intent;   // referencia al ??
-     private Context context; // refrencia a la activity
      private boolean startbs; // indica que se ha iniciado el boundservice
-     private boolean Preparado;
+     private int Orientacion;
 
 
-   public Musica() {
+    public Musica() {
        // Required empty public constructor
 
    }
@@ -58,50 +49,61 @@ public class Musica
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //Inflate the layout for this fragment
+        super.onCreateView(inflater,container,savedInstanceState);
+        Orientacion = getActivity().getRequestedOrientation();
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         vw = inflater.inflate(R.layout.musica, container,  false);
 
+        // referències al polsadors
         btstart = (Button) vw.findViewById(R.id.btMarcha);
         btstop = (Button) vw.findViewById(R.id.btparada);
         btpause = (Button) vw.findViewById(R.id.btpausa);
 
+        // activar rebre polsacions
         btstart.setOnClickListener(this);
         btstop.setOnClickListener(this);
         btpause.setOnClickListener(this);
-        
-        context = this.getContext();
-        intent = new Intent(context, MediaPlayerBoundService.class);
+
+        // referencia al servei a executar
+        intent = new Intent(Compartit.context, MediaPlayerBoundService.class);
+
         return vw;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Toast.makeText(context, "CLICKED BT start", Toast.LENGTH_SHORT).show();
-        startbs =context.bindService(intent, connection, BIND_AUTO_CREATE);
-        if ( !startbs){context.unbindService(connection);}
+        //Toast.makeText(context, "CLICKED BT start", Toast.LENGTH_SHORT).show();
+        // Execució del lligam amb el servei amb la opció de auto_creació i manteniment mentre existegi un vincle amb algún client
+        startbs =Compartit.context.bindService(intent, connection, BIND_AUTO_CREATE);
+        if ( !startbs){Compartit.context.unbindService(connection);}
+
+        MostrarEstat();
 
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Toast.makeText(context, "CLICKED BT Stop", Toast.LENGTH_SHORT).show();
-        if ( !startbs){context.unbindService(connection);}
-
+        //Toast.makeText(context, "CLICKED BT Stop", Toast.LENGTH_SHORT).show();
+        if ( !startbs) {
+            bService.stopService(intent);
+            Compartit.context.unbindService(connection);
+        }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Toast.makeText(context, "CLICKED BT Destroy", Toast.LENGTH_SHORT).show();
-        if ( !startbs){context.unbindService(connection);}
+        //Toast.makeText(context, "CLICKED BT Destroy", Toast.LENGTH_SHORT).show();
+        // para para el servei i elimian el lligam s'espera que el service es destruexi al no tenir cap client
+        if ( !startbs){
+            bService.stopService(intent);
+            Compartit.context.unbindService(connection);
+        }
 
     }
-
-    static int  TYPEFACE_NORMAL = 0;
-    static int  TYPEFACE_BOLD = 1;
-    static int TYPEFACE_ITALIC = 2;
 
     @Override
     public void onClick(View view) {
@@ -109,7 +111,7 @@ public class Musica
         Button  btn = null;
         switch(view.getId()) {
             case R.id.btMarcha:
-                Toast.makeText(context, "CLICKED BT MARCHA", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "CLICKED BT MARCHA", Toast.LENGTH_SHORT).show();
                 try {
                     bService.Iniciar();
 
@@ -120,16 +122,23 @@ public class Musica
                 break;
 
             case R.id.btparada:
-                Toast.makeText(context, "CLICKED BT PARADA", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "CLICKED BT PARADA", Toast.LENGTH_SHORT).show();
                 btn = (Button) view.findViewById(view.getId());
                 bService.Parar();
                 break;
 
             case R.id.btpausa:
-                Toast.makeText(context, "CLICKED BT BTPAUSA", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "CLICKED BT BTPAUSA", Toast.LENGTH_SHORT).show();
                 bService.Pausar();
                 break;
         }
+        MostrarEstat();
+
+    }
+
+    void MostrarEstat() {
+        // si no s'ha creat el servei retorna
+        if(bService== null) return;
 
         if(bService.getEstat() == MediaPlayerBoundService.EstatMediaPlayerEnum.MARXA ) {
             btstart.setTypeface(null,Typeface.BOLD);
@@ -159,16 +168,22 @@ public class Musica
             MediaPlayerBoundService.MyBinder mibinder = (MediaPlayerBoundService.MyBinder) binder;
             bService = mibinder.getService();
             bound = true;
-            Toast.makeText(context, "Onservice connected", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Onservice connected", Toast.LENGTH_SHORT).show();
+            MostrarEstat();
         }
 
         @Override
         public void onServiceDisconnected(ComponentName arg0){
             bound = false;
-            Toast.makeText(context, "Onservice disconnected", Toast.LENGTH_SHORT).show();
+            bService = null;
+            //Toast.makeText(context, "Onservice disconnected", Toast.LENGTH_SHORT).show();
         }
     };
 
-
-
+    @Override
+    public void onDestroyView() {
+        Compartit.AppPref.setEstadoMediaplayer( MediaPlayerBoundService.EstatMediaPlayerEnum.ToString(bService.getEstat()));
+        getActivity().setRequestedOrientation(Orientacion);
+        super.onDestroyView();
+    }
 }
