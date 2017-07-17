@@ -9,11 +9,6 @@ import android.widget.*;
 import com.xavicortes.xclapp.comu.Compartit;
 import com.xavicortes.xclapp.comu.FitxaUsuari;
 
-/**
- * Created by Xavi on 06/07/2017.
- */
-
-
 // Demana la identificació del usuari o be si es vol registrar
 public class LoginActivity extends AppCompatActivity  implements View.OnClickListener{
 
