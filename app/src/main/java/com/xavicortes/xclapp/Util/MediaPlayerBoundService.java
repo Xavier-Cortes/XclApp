@@ -1,4 +1,4 @@
-package com.xavicortes.xclapp;
+package com.xavicortes.xclapp.Util;
 
 import android.app.Service;
 import android.content.Intent;
@@ -7,15 +7,15 @@ import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
+
+import com.xavicortes.xclapp.R;
 
 import java.io.IOException;
-import java.lang.reflect.ParameterizedType;
 
-import static com.xavicortes.xclapp.MediaPlayerBoundService.EstatMediaPlayerEnum.MARXA;
-import static com.xavicortes.xclapp.MediaPlayerBoundService.EstatMediaPlayerEnum.PARAT;
-import static com.xavicortes.xclapp.MediaPlayerBoundService.EstatMediaPlayerEnum.PAUSAT;
-import static com.xavicortes.xclapp.MediaPlayerBoundService.EstatMediaPlayerEnum.PREPARAT;
+import static com.xavicortes.xclapp.Util.MediaPlayerBoundService.EstatMediaPlayerEnum.MARXA;
+import static com.xavicortes.xclapp.Util.MediaPlayerBoundService.EstatMediaPlayerEnum.PARAT;
+import static com.xavicortes.xclapp.Util.MediaPlayerBoundService.EstatMediaPlayerEnum.PAUSAT;
+import static com.xavicortes.xclapp.Util.MediaPlayerBoundService.EstatMediaPlayerEnum.PREPARAT;
 
 /**
  * Created by Xavi on 05/07/2017.
@@ -30,7 +30,33 @@ public class MediaPlayerBoundService
                 MARXA
                 ,PARAT
                 ,PAUSAT
-                ,PREPARAT
+                ,PREPARAT;
+
+
+                public static String ToString(EstatMediaPlayerEnum Estat) {
+                    if (EstatMediaPlayerEnum.PAUSAT ==Estat) {
+                        return "PAUSAT";
+                    } else if( EstatMediaPlayerEnum.PARAT == Estat) {
+                        return "PARAT";
+                      } else if( EstatMediaPlayerEnum.MARXA == Estat) {
+                        return "MARXA";
+                      } else if( EstatMediaPlayerEnum.PREPARAT == Estat) {
+                        return "PREPARAT";
+                    }
+                    return "";
+                }
+                public static EstatMediaPlayerEnum ToEstat(String s) {
+                    if (s.equals("PAUSAT")) {
+                        return PAUSAT;
+                    } else if(s.equals("PARAT")) {
+                        return PARAT;
+                    } else if(s.equals("MARXA")) {
+                        return MARXA;
+                    } else if(s.equals("PREPARAT")) {
+                        return PREPARAT;
+                    }
+                    return PARAT;
+                }
             }
 
     public int código = 0;
@@ -50,20 +76,20 @@ public class MediaPlayerBoundService
 
     }
 
-
     @Override
     public void onCompletion(MediaPlayer mp) {
-        Toast.makeText(context, "Completion", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Completion", Toast.LENGTH_SHORT).show();
+        Estat = PARAT;
     }
 
     @Override
     public void onPrepared(MediaPlayer mp) {
-        Toast.makeText(context, "Preapared", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Preapared", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
-        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -71,7 +97,7 @@ public class MediaPlayerBoundService
     public void onCreate() {
         super.onCreate();
         context = getBaseContext( );
-        Toast.makeText(context, "Create", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Create", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -80,7 +106,7 @@ public class MediaPlayerBoundService
                               int startId) {
         int i = super.onStartCommand(intent, flags, startId);
         context = getBaseContext();
-        Toast.makeText(context, "OnStartCommand", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "OnStartCommand", Toast.LENGTH_SHORT).show();
         return i;
     }
 

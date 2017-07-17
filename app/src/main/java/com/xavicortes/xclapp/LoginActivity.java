@@ -6,28 +6,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.*;
 
+import com.xavicortes.xclapp.comu.Compartit;
+import com.xavicortes.xclapp.comu.FitxaUsuari;
+
 /**
  * Created by Xavi on 06/07/2017.
  */
 
 public class LoginActivity extends AppCompatActivity  implements View.OnClickListener{
 
-    AppPreferencias appPref;
-    Registro uReg;
+    //AppPreferencies appPref;
+    //DadesUsuari uReg;
 
     Button btnRegister;
     Button btnLogin;
     EditText etUsername;
-    EditText etPassword;
+    EditText etContrasenya;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginactivity);
-
-        appPref = new AppPreferencias(getApplicationContext());
-        uReg = new Registro(appPref);
-
 
         btnRegister = (Button) findViewById(R.id.log_register);
         btnRegister.setOnClickListener(this);
@@ -37,10 +36,23 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         btnLogin.setOnClickListener(this);
 
         etUsername = (EditText) findViewById(R.id.log_username);
-        etPassword =  (EditText) findViewById(R.id.log_password);
+        etContrasenya =  (EditText) findViewById(R.id.log_password);
 
-        etUsername.setText(appPref.getCredenciales(),TextView.BufferType.EDITABLE);
 
+        //DadesUsu.DB.EliminarTabla();
+        //DadesUsu.DB.CrearTabla();
+
+        // intenta carregat el nom del usuari últim
+        // si falla perque es la primera vegada no fa res
+        try {
+            etUsername.setText(Compartit.DadesUsu.getFitxaUsuari().getNom(),TextView.BufferType.EDITABLE);
+
+        } catch ( Exception e) {
+
+        }
+
+        // al pasar per aquesta activity s'anulen les identificacions anotades
+        Compartit.AppPref.setPrimerVegada(true);
     }
 
     @Override
@@ -50,9 +62,9 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         int id = v.getId();
         switch (id) {
             case R.id.log_register:
-                 un= etUsername.getText().toString();
-                if (!uReg.ElUsuarioExiste(un)) {
-                    uReg.RegistrarUsuario(etUsername.getText().toString());
+                un= etUsername.getText().toString();
+                if (!Compartit.DadesUsu.ElUsuarioExiste(un)) {
+                    Compartit.DadesUsu.RegistrarUsuario(etUsername.getText().toString(), etContrasenya.getText().toString());
                     i = new Intent(this, MainActivity.class);
                     startActivity(i);
                     finish();
@@ -65,8 +77,8 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
                 break;
 
             case R.id.log_login:
-                un = etUsername.getText().toString();
-                if (uReg.ElUsuarioExiste(un)) {
+                if (Compartit.DadesUsu.ComprovarCredencials(etUsername.getText().toString(),etContrasenya.getText().toString())) {
+                    Compartit.DadesUsu.ActivarUsuari(etUsername.getText().toString());
                     i = new Intent(this, MainActivity.class);
                     startActivity(i);
                     finish();
@@ -76,7 +88,6 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
                     startActivity(i);
                     finish();
                 }
-
                 break;
         }
     }

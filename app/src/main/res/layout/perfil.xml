@@ -9,15 +9,124 @@
         android:orientation="vertical"
         android:weightSum="1">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_margin="0dp"
+            android:orientation="horizontal"
+            android:padding="0dp">
 
-        <Button
-            android:id="@+id/Perfil_btlogout"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left|center_vertical"
+                android:text="Imagen"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left|fill_horizontal"
+                android:text="     "
+                />
+
+            <ImageButton
+                android:id="@+id/Perfil_Imatge"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+
+        </LinearLayout>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.25"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="LogOut" />
+            android:text="Nombre"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/Perfil_edNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nom"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contraseña"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/Perfil_edContrasenya"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Contrasenya"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dirección"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <EditText
+            android:id="@+id/Perfil_edAdreça"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            android:layout_weight="1"
+            android:hint="Adreça"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+
+                android:text="GPS"/>
+
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notificaciones"
+            android:textStyle="bold"/>
+
+
+        <EditText
+            android:id="@+id/Perfil_edNotificacions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Notificacions"/>
+
+        <TextView
+            android:id="@+id/Perfil_tvetqIntents"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="Intents"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/Perfil_tvIntents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="intents"
+            android:textSize="18sp"
+            />
+
+        <Button
+            android:id="@+id/Perfil_btLogout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Desconectar"/>
 
 
     </LinearLayout>

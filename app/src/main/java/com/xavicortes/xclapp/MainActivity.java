@@ -1,5 +1,7 @@
 package com.xavicortes.xclapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -13,13 +15,17 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 
 import com.xavicortes.xclapp.fragments.Calculadora;
 import com.xavicortes.xclapp.fragments.Memory;
 import com.xavicortes.xclapp.fragments.Musica;
 import com.xavicortes.xclapp.fragments.Perfil;
-import com.xavicortes.xclapp.fragments.Ranking;
+import com.xavicortes.xclapp.fragments.Classificacio;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity
             extends AppCompatActivity
@@ -74,9 +80,16 @@ public class MainActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout) {
-            return true;
+
+        //noinspectionS implifiableIfStatement
+        switch (id) {
+            case R.id.action_logout:
+                Intent i = new Intent(this, LoginActivity.class);
+                startActivity(i);
+                finish();
+                return true;
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -88,40 +101,40 @@ public class MainActivity
 
         Fragment f = null;
         navigationView.setCheckedItem(id);
-        switch(id) {
+        switch (id) {
             case R.id.nav_memory:
                 f = new Memory();
-                title  = getString(R.string.memory);
+                title = getString(R.string.memory);
                 break;
 
-            case R.id.nav_ranking :
-                f = new Ranking();
-                title  = getString(R.string.ranking);
+            case R.id.nav_ranking:
+                f = new Classificacio();
+                title = getString(R.string.ranking);
                 break;
 
-            case R.id.nav_musica :
+            case R.id.nav_musica:
                 f = new Musica();
-                title  = getString(R.string.música);
+                title = getString(R.string.música);
                 break;
 
-            case R.id.nav_perfil :
+            case R.id.nav_perfil:
                 f = new Perfil();
-                title  = getString(R.string.perfil);
+                title = getString(R.string.perfil);
                 break;
 
-            case R.id.nav_calculadora :
+            case R.id.nav_calculadora:
 
                 f = new Calculadora();
-                title  = getString(R.string.calculadora);
+                title = getString(R.string.calculadora);
                 break;
 
 
         }
 
-        if(f != null){
+        if (f != null) {
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_container,f);
+            ft.replace(R.id.fragment_container, f);
             ft.commit();
         }
 
@@ -135,4 +148,6 @@ public class MainActivity
         displayView(item.getItemId());
         return false;
     }
+
 }
+

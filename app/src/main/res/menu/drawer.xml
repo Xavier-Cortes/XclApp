@@ -1,8 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
     <item
         android:id="@+id/action_logout"
-        android:orderInCategory="100"
-        android:title="@string/action_logout" />
+        android:title="Desconectar" />
+
+   <!-- <item
+        android:id="@+id/action_Notificaciones"
+        android:title="Notificaciones" >
+
+        <menu>
+            <item
+                android:id="@+id/action_toast"
+                android:title="Toast" />
+            <item
+                android:id="@+id/action_Estado"
+                android:title="De estado" />
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/action_Llamar"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Llamar"
+        />
+
+    <item
+        android:icon="@drawable/ic_menu_camera"
+        android:id="@+id/action_Navegador"
+        android:title="Navegador"
+        />
+
+-->
+
+
  </menu>

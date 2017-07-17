@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+<LinearLayout android:layout_height="match_parent"
+
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+                          android:orientation="vertical">
 
 
-    <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="NoLogon"
-    android:textSize="40sp"
-    android:gravity="center_horizontal|center_vertical"
-        android:layout_weight="0.16" />
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Reintentar"
-        android:textSize="40sp"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_weight="0.16" />
 
     <ImageView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
+        android:layout_height="205dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_weight="7.14"
+        />
+    <Button
+        android:id="@+id/NoLogon_Reintentar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.16"
-        app:srcCompat="@mipmap/ic_login" />
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Reintentar"
+        android:textSize="30sp"
+        android:layout_weight="1.20"/>
 
 
 </LinearLayout>

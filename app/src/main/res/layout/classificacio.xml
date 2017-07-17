@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="top">
+
+        <TextView
+
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text=""/>
+
+
+        <TextView
+
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nombre"/>
+
+        <TextView
+
+
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Intentos"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/Classificacio_rvwLLista"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_weight="1"/>
+
+</LinearLayout>
+

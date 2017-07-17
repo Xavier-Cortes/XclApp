@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xavicortes.xclapp">
+    <!--<original-package android:name="com.android.browser" /> -->
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +19,9 @@
         android:theme="@style/AppTheme">
 
 
+
         <activity
+
             android:name=".InicialActivity"
             android:label="@string/title_activity_drawer"
             android:theme="@style/AppTheme.NoActionBar">
@@ -39,13 +49,10 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-
-
-
-        <service android:name=".MediaPlayerBoundService">
-            <intent-filter>
-                <action android:name="BOUNDSERVICE"></action>
-            </intent-filter>
+        <service android:name=".Util.MediaPlayerBoundService">
+            <!--<intent-filter>
+             <action android:name="BOUNDSERVICE"></action>
+            </intent-filter>-->
         </service>
     </application>
 

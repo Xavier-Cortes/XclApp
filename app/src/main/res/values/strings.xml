@@ -18,4 +18,6 @@
     <string name="música">Música</string>
     <string name="perfil">Perfil</string>
     <string name="calculadora">Calculadora</string>
+    <string name="pause">Pausa</string>
+    <string name="resume">Reiniciar</string>
 </resources>
