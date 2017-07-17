@@ -7,10 +7,7 @@ import android.view.View;
 import android.widget.*;
 
 
-/**
- * Created by Xavi on 06/07/2017.
- */
-
+// Activity d'avis el usari quan hi ha un error alhora de identificar-se
 public class NoLogActivity extends AppCompatActivity implements View.OnClickListener {
 
 

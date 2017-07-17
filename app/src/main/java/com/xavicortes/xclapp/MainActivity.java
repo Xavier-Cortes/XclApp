@@ -27,6 +27,10 @@ import com.xavicortes.xclapp.fragments.Classificacio;
 
 import static java.security.AccessController.getContext;
 
+
+//Antivity principal
+// on es genera el navigatos per poder selccionar les distintes opcions que s'executan fent servir fragments
+
 public class MainActivity
             extends AppCompatActivity
             implements NavigationView.OnNavigationItemSelectedListener {
