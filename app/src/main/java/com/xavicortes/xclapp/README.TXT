@@ -47,7 +47,7 @@ Calculadora
     Totes les opcions del ActionBar
     Guardar el tipus de notifiacions a la fitxa del usuari
     Te en compta la prioritat de operacions entre addicions i producte
-    Permet la memori ans
+    Permet la memoria ans
 
 
 
