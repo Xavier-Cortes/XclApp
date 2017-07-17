@@ -12,9 +12,6 @@ import com.xavicortes.xclapp.comu.FitxaUsuari;
 // Demana la identificació del usuari o be si es vol registrar
 public class LoginActivity extends AppCompatActivity  implements View.OnClickListener{
 
-    //AppPreferencies appPref;
-    //DadesUsuari uReg;
-
     Button btnRegister;
     Button btnLogin;
     EditText etUsername;
@@ -41,12 +38,12 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
 
         // intenta carregat el nom del usuari últim
         // si falla perque es la primera vegada no fa res
-        try {
+        /*try {
             etUsername.setText(Compartit.DadesUsu.getFitxaUsuari().getNom(),TextView.BufferType.EDITABLE);
 
         } catch ( Exception e) {
 
-        }
+        }*/
 
         // al pasar per aquesta activity s'anulen les identificacions anotades
         Compartit.AppPref.setPrimerVegada(true);
@@ -55,21 +52,25 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     @Override
     public void onClick(View v) {
         Intent i ;
-        String un;
+        String username;
         int id = v.getId();
+        boolean err =false;
         switch (id) {
             case R.id.log_register:
-                un= etUsername.getText().toString();
-                if (!Compartit.DadesUsu.ElUsuarioExiste(un)) {
-                    Compartit.DadesUsu.RegistrarUsuario(etUsername.getText().toString(), etContrasenya.getText().toString());
-                    i = new Intent(this, MainActivity.class);
-                    startActivity(i);
-                    finish();
+                username= etUsername.getText().toString();
+                if (!Compartit.DadesUsu.ElUsuarioExiste(username)) {
+                    if ( etContrasenya.getText().toString().equals(""))
+                    {
+                        err = true;
+                    } else {
+                        Compartit.DadesUsu.RegistrarUsuario(username, etContrasenya.getText().toString());
+                        i = new Intent(this, MainActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
                 }
                 else {
-                     i = new Intent(this, NoLogActivity.class);
-                    startActivity(i);
-                    finish();
+                     err = true;
                 }
                 break;
 
@@ -81,11 +82,15 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
                     finish();
                 }
                 else {
-                    i = new Intent(this, NoLogActivity.class);
-                    startActivity(i);
-                    finish();
+                    err = true;
                 }
                 break;
+        }
+
+        if (err) {
+            i = new Intent(this, NoLogActivity.class);
+            startActivity(i);
+            finish();
         }
     }
 }
