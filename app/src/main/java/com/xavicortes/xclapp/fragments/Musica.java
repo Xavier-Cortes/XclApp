@@ -23,7 +23,7 @@ import java.io.IOException;
 import static android.content.Context.BIND_AUTO_CREATE;
 
 /*
-Controla un boudservice el que hi ha un mediaplayer executant una canço
+Controla un boudservice on hi ha un mediaplayer executant una canço
 */
 public class Musica
         extends Fragment
